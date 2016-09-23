@@ -1,0 +1,24 @@
+import requests
+from BeautifulSoup import BeautifulSoup
+
+search_url = 'http://www.less-real.com/quotes/search/One%20Piece'
+
+#url = raw_input("Entet the youtube url: ")
+response = requests.get(search_url)
+html = response.content
+soup = BeautifulSoup(html)
+#get all the divs
+allDivs = soup.findAll("div" , attrs = {'class' : 'quote'})
+i = 0
+f1 = open('one_piece.txt' , 'w')
+f2 = open('one_piece_by.txt' , 'w')
+for row in allDivs:
+	quoteBy = row.find('a').getText().encode("utf-8")
+	quote = row.find('span' , attrs = {'class': 'quoteText'}).getText().encode("utf-8")
+	if len(quote)<110:
+		tempstr = quote.replace('"' , "'")
+		f1.write("\"" + tempstr + "\"" + " , " + "\n")
+		f2.write("'" + quoteBy + "'" + " , " + "\n")
+	i+=1;
+	print i
+

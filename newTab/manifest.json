@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "OnePieceTab",
+  "version": "0.1" ,
+  "description" : "Posts a one piece quote in every new tab" ,
+
+	"icons": {
+		"64" : "icon.png" , 
+		"32" : "icon.png" , 
+		"16" : "icon.png" , 
+		"128" : "icon.png"
+
+	} ,
+
+	"browser_action" : {
+		"icon_default" : "icon.png"
+	},
+
+	"chrome_url_overrides" : {
+		"newtab" : "newTab.html"
+	} 
+
+
+}
